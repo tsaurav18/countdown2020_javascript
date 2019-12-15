@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+    *{
+        padding:0;
+        margin:0;
+        background-image:url('christ1.jpg');
+        background-size:cover;
+        background-repeat: no-repeat;
+        
+
+    }
+    .container{
+    position: absolute;
+    top: 115px;
+    left: 115px;
+    height: 80%;
+    width: 81%;
+    box-shadow: 
+       inset 0 -3em 3em rgba(0,0,0,0.1), 
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+    
+   
+}
+
+    .container h2{
+        margin-top:100px;
+        font-size:7rem;
+        font-display:'poppins';
+        color:rgb(124, 39, 244);
+        text-align:center;
+        background:none;
+        margin-bottom:20px;
+        -webkit-mask-image: linear-gradient(to bottom, black 70%,transparent);
+    text-shadow: 10px 10px 10px #F44336;
+    -webkit-text-stroke: 5px rgba(234, 17, 57, 0.3);
+
+     
+    }
+    .container h3{
+        font-size:4rem;
+        font-display:'poppins';
+        color:rgb(66, 172, 221);
+        text-align:center;
+        background:none;
+        text-shadow: 0 0 10px rgb(170, 0, 255);
+    -webkit-text-stroke: 2px rgba(170, 0, 255, 0.3);
+    width: 95%;
+     
+    }
+  
+.countdown {
+    margin-top:100px;
+  text-align: center;
+  margin-bottom: 20px;
+  background:none;
+}
+.countdown .timeel {
+    display: inline-block;
+    padding: 13px;
+    background: #151515;
+    margin: 0;
+    color: white;
+    min-width: 2.6rem;
+    margin-left: 13px;
+    border-radius: 10px 0 0 10px;
+
+
+}
+.countdown span[class*="timeRef"] {
+  border-radius: 0 10px 10px 0;
+  margin-left: 0;
+  background: #e8c152;
+  color: black;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Happy Christmas</h2>
+        <h3>Count Down 2020</h3>
+
+        <div class="countdown" id="countdown1">
+            <span class="timeel days">00</span>
+            <span class="timeel timeRefDays">days</span>
+            <span class="timeel hours">00</span>
+            <span class="timeel timeRefHours">hours</span>
+            <span class="timeel minutes">00</span>
+            <span class="timeel timeRefMinutes">minutes</span>
+            <span class="timeel seconds">00</span>
+            <span class="timeel timeRefSeconds">seconds</span>
+          </div>
+    </div>
+
+<script>
+    window.onload = function() {
+  // Month Day, Year Hour:Minute:Second, id-of-element-container
+  countDownToTime("dec 31, 2019 12:00:00", 'countdown1'); // ****** Change this line!
+}
+function countDownToTime(countTo, id) {
+  countTo = new Date(countTo).getTime();
+  var now = new Date(),
+      countTo = new Date(countTo),
+      timeDifference = (countTo - now);
+      
+  var secondsInADay = 60 * 60 * 1000 * 24,
+      secondsInAHour = 60 * 60 * 1000;
+
+  days = Math.floor(timeDifference / (secondsInADay) * 1);
+  hours = Math.floor((timeDifference % (secondsInADay)) / (secondsInAHour) * 1);
+  mins = Math.floor(((timeDifference % (secondsInADay)) % (secondsInAHour)) / (60 * 1000) * 1);
+  secs = Math.floor((((timeDifference % (secondsInADay)) % (secondsInAHour)) % (60 * 1000)) / 1000 * 1);
+
+  var idEl = document.getElementById(id);
+  idEl.getElementsByClassName('days')[0].innerHTML = days;
+  idEl.getElementsByClassName('hours')[0].innerHTML = hours;
+  idEl.getElementsByClassName('minutes')[0].innerHTML = mins;
+  idEl.getElementsByClassName('seconds')[0].innerHTML = secs;
+
+  clearTimeout(countDownToTime.interval);
+  countDownToTime.interval = setTimeout(function(){ countDownToTime(countTo, id); },1000);
+}
+</script>
+</body>
+</html>
